@@ -21,25 +21,63 @@
       </div>
       <div>
         <!-- hamburger icon -->
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="size-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-          />
-        </svg>
+        <button aria-label="open menu">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </button>
 
         <div>
           <!-- Add light/dark mode toggler -->
           <nav>
             <!-- Close icon -->
+            <button aria-label="close menu">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18 18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+
+            <a href="./feed.html">feed</a>
+            <a href="./../profile/profile.html">profile</a>
+            <a href="./../index.html">logout</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div>
+        <h1>feed</h1>
+        <div>
+          <input
+            type="search"
+            name="search"
+            id="search"
+            aria-label="search for posts"
+          />
+          <button aria-label="create a post">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -51,18 +89,58 @@
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                d="M6 18 18 6M6 6l12 12"
+                d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
               />
             </svg>
+          </button>
+        </div>
+        <div>
+          <p>newest</p>
+          <p>oldest</p>
+        </div>
 
-            <a href="./feed.html">feed</a>
-            <a href="./../profile/profile.html">profile</a>
-            <a href="./../index.html">logout</a>
-          </nav>
+        <!-- Feed -->
+        <div>
+          <!-- card -->
+          <div>
+            <img src="#" />
+            <p>username</p>
+            <p>... min ago</p>
+          </div>
+          <!-- card -->
+          <div>
+            <img src="#" />
+            <p>username</p>
+            <p>... min ago</p>
+          </div>
+          <!-- card -->
+          <div>
+            <img src="#" />
+            <p>username</p>
+            <p>... min ago</p>
+          </div>
+          <!-- card -->
+          <div>
+            <img src="#" />
+            <p>username</p>
+            <p>... min ago</p>
+          </div>
+          <!-- card -->
+          <div>
+            <img src="#" />
+            <p>username</p>
+            <p>... min ago</p>
+          </div>
+          <!-- card -->
+          <div>
+            <img src="#" />
+            <p>username</p>
+            <p>... min ago</p>
+          </div>
         </div>
       </div>
-    </header>
-    <main></main>
-    <footer></footer>
+    </main>
+
+    <footer>© 2025 Martine Kongsrud. All rights reserved.</footer>
   </body>
 </html>

@@ -21,39 +21,43 @@
       </div>
       <div>
         <!-- hamburger icon -->
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="size-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-          />
-        </svg>
+        <button aria-label="open menu">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </button>
 
         <div>
           <!-- Add light/dark mode toggler -->
           <nav>
             <!-- Close icon -->
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M6 18 18 6M6 6l12 12"
-              />
-            </svg>
+            <button aria-label="close menu">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18 18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
 
             <a href="./posts/feed.html">feed</a>
             <a href="./profile/profile.html">profile</a>
@@ -62,7 +66,25 @@
         </div>
       </div>
     </header>
-    <main></main>
-    <footer></footer>
+
+    <main>
+      <div>
+        <h1>login</h1>
+        <form>
+          <label for="name">name</label>
+          <input type="text" name="name" id="name" />
+          <label for="password">password</label>
+          <input type="password" name="password" id="password" />
+          <button type="submit">login</button>
+        </form>
+        <p>
+          don't have an account? <a href="./auth/register.html">register</a>
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2025 Martine Kongsrud. All rights reserved.</p>
+    </footer>
   </body>
 </html>
