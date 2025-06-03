@@ -12,10 +12,13 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=graphic_eq"
     />
     <link rel="stylesheet" href="./src/css/styles.css" />
+    <script type="module" src="./src/js/script.js"></script>
     <title>Social | Login</title>
   </head>
-  <body class="m-8">
-    <header class="flex justify-between">
+  <body
+    class="flex flex-col min-h-screen text-zinc-900 bg-zinc-100 dark:text-zinc-100 dark:bg-zinc-900"
+  >
+    <header class="flex justify-between m-8">
       <div class="flex items-center gap-2">
         <span class="text-4xl material-symbols-outlined text-amber-700">
           graphic_eq
@@ -24,7 +27,7 @@
       </div>
       <div class="flex items-center">
         <!-- hamburger icon -->
-        <button aria-label="open menu">
+        <button id="menu-open" class="z-50 md:hidden" aria-label="open menu">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -41,18 +44,66 @@
           </svg>
         </button>
 
-        <div class="hidden">
-          <!-- Add light/dark mode toggler -->
-          <nav>
+        <div
+          id="mobile-menu"
+          class="fixed inset-0 z-40 flex-col hidden bg-amber-400 text-zinc-900 dark:bg-amber-700 dark:text-zinc-100 md:static md:flex md:flex-row-reverse md:bg-zinc-100 md:dark:bg-zinc-900 md:gap-8"
+        >
+          <!-- Mode toggle -->
+          <div class="flex justify-between p-8 md:p-4">
+            <button id="theme-toggle" aria-label="Toggle Dark/Light Mode">
+              <div
+                class="flex items-center justify-around w-16 h-8 bg-zinc-200 rounded-3xl dark:flex-row-reverse dark:bg-zinc-800"
+                id="toggle-container"
+              >
+                <!-- Sun icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="transition-opacity duration-300 size-6 text-amber-700"
+                  id="sun-icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+                  />
+                </svg>
+
+                <!-- Moon icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="hidden transition-opacity duration-300 size-6 text-amber-400"
+                  id="moon-icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+                  />
+                </svg>
+
+                <div
+                  class="bg-zinc-900 h-7 w-7 rounded-3xl dark:bg-zinc-100"
+                ></div>
+              </div>
+            </button>
+
             <!-- Close icon -->
-            <button aria-label="close menu">
+            <button id="menu-close" aria-label="close menu" class="md:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="size-6"
+                class="size-9"
               >
                 <path
                   stroke-linecap="round"
@@ -61,32 +112,68 @@
                 />
               </svg>
             </button>
+          </div>
 
-            <a href="./posts/feed.html">feed</a>
-            <a href="./profile/profile.html">profile</a>
-            <a href="./index.html">login</a>
+          <nav
+            class="flex flex-col justify-start flex-grow pt-8 text-lg font-medium text-center md:flex-row md:pt-0 md:items-center md:gap-8"
+          >
+            <a
+              href="./posts/feed.html"
+              class="w-full p-4 capitalize hover:bg-amber-300 dark:hover:bg-amber-600 md:hover:bg-transparent md:dark:hover:bg-transparent"
+              >feed</a
+            >
+            <a
+              href="./profile/profile.html"
+              class="w-full p-4 capitalize hover:bg-amber-300 dark:hover:bg-amber-600 md:hover:bg-transparent md:dark:hover:bg-transparent"
+              >profile</a
+            >
+            <a
+              href="./index.html"
+              class="w-full p-4 capitalize hover:bg-amber-300 dark:hover:bg-amber-600 md:hover:bg-transparent md:dark:hover:bg-transparent"
+              >login</a
+            >
           </nav>
         </div>
       </div>
     </header>
 
-    <main>
-      <div>
-        <h1>login</h1>
-        <form>
-          <label for="name">name</label>
-          <input type="text" name="name" id="name" />
-          <label for="password">password</label>
-          <input type="password" name="password" id="password" />
-          <button type="submit">login</button>
+    <main class="flex-grow mx-8 mt-14 md:mx-auto">
+      <div class="mx-auto md:w-96 max-w-96">
+        <h1 class="text-5xl font-bold capitalize">login</h1>
+        <form class="flex flex-col gap-4 mt-12">
+          <label for="name" class="text-xl capitalize">name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Enter your name"
+            class="px-4 py-2 text-lg border rounded-3xl border-zinc-900"
+          />
+          <label for="password" class="mt-6 text-xl capitalize">password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter your email"
+            class="px-4 py-2 text-lg border rounded-3xl border-zinc-900"
+          />
+          <button
+            type="submit"
+            class="py-3 my-12 text-xl font-bold tracking-wider capitalize transition duration-300 ease-in-out bg-teal-700 shadow-lg text-zinc-100 rounded-3xl hover:bg-teal-900 dark:bg-teal-300 dark:hover:bg-teal-500 dark:text-zinc-900"
+          >
+            login
+          </button>
         </form>
-        <p>
-          don't have an account? <a href="./auth/register.html">register</a>
+        <p class="pb-12 text-lg text-center capitalize">
+          don't have an account?
+          <a href="./auth/register.html" class="font-bold">register</a>
         </p>
       </div>
     </main>
 
-    <footer>
+    <footer
+      class="p-10 text-center bg-zinc-200 text-zinc-900 dark:text-zinc-100 dark:bg-zinc-800"
+    >
       <p>© 2025 Martine Kongsrud. All rights reserved.</p>
     </footer>
   </body>
