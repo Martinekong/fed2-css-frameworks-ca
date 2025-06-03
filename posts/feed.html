@@ -12,10 +12,14 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=graphic_eq"
     />
     <link rel="stylesheet" href="./../src/css/styles.css" />
+    <script type="module" src="./../src/js/script.js"></script>
+    <script type="module" src="./../src/js/feed.js"></script>
     <title>Social | Feed</title>
   </head>
-  <body>
-    <header class="flex justify-between">
+  <body
+    class="flex flex-col min-h-screen text-zinc-900 bg-zinc-100 dark:text-zinc-100 dark:bg-zinc-900"
+  >
+    <header class="flex justify-between m-8">
       <div class="flex items-center gap-2">
         <span class="text-4xl material-symbols-outlined text-amber-700">
           graphic_eq
@@ -24,7 +28,7 @@
       </div>
       <div class="flex items-center">
         <!-- hamburger icon -->
-        <button aria-label="open menu">
+        <button id="menu-open" class="md:hidden" aria-label="open menu">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -41,18 +45,66 @@
           </svg>
         </button>
 
-        <div class="hidden">
-          <!-- Add light/dark mode toggler -->
-          <nav>
+        <div
+          id="mobile-menu"
+          class="fixed inset-0 z-40 flex-col hidden bg-amber-400 text-zinc-900 dark:bg-amber-700 dark:text-zinc-100 md:static md:flex md:flex-row-reverse md:bg-zinc-100 md:dark:bg-zinc-900 md:gap-8"
+        >
+          <!-- Mode toggle -->
+          <div class="flex justify-between p-8 md:p-4">
+            <button id="theme-toggle" aria-label="Toggle Dark/Light Mode">
+              <div
+                class="flex items-center justify-around w-16 h-8 bg-zinc-200 rounded-3xl dark:flex-row-reverse dark:bg-zinc-800"
+                id="toggle-container"
+              >
+                <!-- Sun icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="transition-opacity duration-300 size-6 text-amber-700"
+                  id="sun-icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+                  />
+                </svg>
+
+                <!-- Moon icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="hidden transition-opacity duration-300 size-6 text-amber-400"
+                  id="moon-icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+                  />
+                </svg>
+
+                <div
+                  class="bg-zinc-900 h-7 w-7 rounded-3xl dark:bg-zinc-100"
+                ></div>
+              </div>
+            </button>
+
             <!-- Close icon -->
-            <button aria-label="close menu">
+            <button id="menu-close" aria-label="close menu" class="md:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="size-6"
+                class="size-9"
               >
                 <path
                   stroke-linecap="round"
@@ -61,26 +113,47 @@
                 />
               </svg>
             </button>
+          </div>
 
-            <a href="./feed.html">feed</a>
-            <a href="./../profile/profile.html">profile</a>
-            <a href="./../index.html">logout</a>
+          <nav
+            class="flex flex-col justify-start flex-grow pt-8 text-lg font-medium text-center md:flex-row md:pt-0 md:items-center md:gap-8"
+          >
+            <a
+              href="./feed.html"
+              class="w-full p-4 capitalize hover:bg-amber-300 dark:hover:bg-amber-600 md:hover:bg-transparent md:dark:hover:bg-transparent"
+              >feed</a
+            >
+            <a
+              href="./../profile/profile.html"
+              class="w-full p-4 capitalize hover:bg-amber-300 dark:hover:bg-amber-600 md:hover:bg-transparent md:dark:hover:bg-transparent"
+              >profile</a
+            >
+            <a
+              href="./../index.html"
+              class="w-full p-4 capitalize hover:bg-amber-300 dark:hover:bg-amber-600 md:hover:bg-transparent md:dark:hover:bg-transparent"
+              >logout</a
+            >
           </nav>
         </div>
       </div>
     </header>
 
-    <main>
-      <div>
-        <h1>feed</h1>
-        <div>
+    <main class="flex-grow mx-8 mt-14 md:mx-auto md:px-8">
+      <div class="flex flex-col gap-8">
+        <h1 class="text-5xl font-bold capitalize">feed</h1>
+        <div class="flex gap-4">
           <input
             type="search"
             name="search"
             id="search"
             aria-label="search for posts"
+            placeholder="Search for posts"
+            class="flex-grow px-4 py-2 text-lg border rounded-3xl border-zinc-900 text-zinc-900"
           />
-          <button aria-label="create a post">
+          <button
+            aria-label="create a post"
+            class="h-12 px-4 text-xl font-bold tracking-wider capitalize transition duration-300 ease-in-out bg-teal-700 shadow-lg text-zinc-100 rounded-3xl hover:bg-teal-900 dark:bg-teal-300 dark:hover:bg-teal-500 dark:text-zinc-900"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -97,53 +170,201 @@
             </svg>
           </button>
         </div>
-        <div>
-          <p>newest</p>
-          <p>oldest</p>
+        <div class="grid grid-cols-2">
+          <button
+            id="newest"
+            class="p-4 text-lg capitalize border-b-2 border-amber-700 dark:border-amber-400"
+          >
+            newest
+          </button>
+          <button
+            id="oldest"
+            class="p-4 text-lg capitalize border-amber-700 dark:border-amber-400"
+          >
+            oldest
+          </button>
         </div>
 
         <!-- Feed -->
-        <div>
+        <div
+          class="grid grid-cols-1 gap-4 mb-12 sm:grid-cols-2 lg:grid-cols-3"
+          id="feed-container"
+        >
           <!-- card -->
-          <div>
-            <img src="#" />
-            <p>username</p>
-            <p>... min ago</p>
+          <div
+            class="rounded text-zinc-900 bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-100"
+          >
+            <div class="flex items-center justify-between p-4">
+              <div class="flex items-center gap-4">
+                <img
+                  src="https://images.unsplash.com/photo-1586022045315-1cdd6493045c?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="profile image"
+                  class="w-10 h-10 rounded-full"
+                />
+                <p class="text-lg font-bold">Tony</p>
+              </div>
+              <p>4 minutes ago</p>
+            </div>
+            <img
+              src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=3174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="man on top of a mountain looking out over the view"
+              class="object-cover w-full h-64 rounded-b"
+            />
           </div>
           <!-- card -->
-          <div>
-            <img src="#" />
-            <p>username</p>
-            <p>... min ago</p>
+          <div
+            class="rounded text-zinc-900 bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-100"
+          >
+            <div class="flex items-center justify-between p-4">
+              <div class="flex items-center gap-4">
+                <img
+                  src="https://images.unsplash.com/photo-1619895862022-09114b41f16f?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="profile image"
+                  class="object-cover w-10 h-10 rounded-full"
+                />
+                <p class="text-lg font-bold">Sophie</p>
+              </div>
+              <p>22 minutes ago</p>
+            </div>
+            <img
+              src="https://images.unsplash.com/photo-1712746785126-e9f28b5b3cc0?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="man on top of a mountain looking out over the view"
+              class="object-cover w-full h-64 rounded-b"
+            />
           </div>
           <!-- card -->
-          <div>
-            <img src="#" />
-            <p>username</p>
-            <p>... min ago</p>
+          <div
+            class="rounded text-zinc-900 bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-100"
+          >
+            <div class="flex items-center justify-between p-4">
+              <div class="flex items-center gap-4">
+                <img
+                  src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="profile image"
+                  class="object-cover w-10 h-10 rounded-full"
+                />
+                <p class="text-lg font-bold">Daniel</p>
+              </div>
+              <p>4 hours ago</p>
+            </div>
+            <img
+              src="https://images.unsplash.com/photo-1660625416147-a204b56d62a9?q=80&w=2964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="man on top of a mountain looking out over the view"
+              class="object-cover w-full h-64 rounded-b"
+            />
           </div>
           <!-- card -->
-          <div>
-            <img src="#" />
-            <p>username</p>
-            <p>... min ago</p>
+          <div
+            class="rounded text-zinc-900 bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-100"
+          >
+            <div class="flex items-center justify-between p-4">
+              <div class="flex items-center gap-4">
+                <img
+                  src="https://images.unsplash.com/photo-1619895862022-09114b41f16f?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="profile image"
+                  class="object-cover w-10 h-10 rounded-full"
+                />
+                <p class="text-lg font-bold">Sophie</p>
+              </div>
+              <p>22 hours ago</p>
+            </div>
+            <img
+              src="https://images.unsplash.com/photo-1639149732680-90a59b93e7d8?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="man on top of a mountain looking out over the view"
+              class="object-cover w-full h-64 rounded-b"
+            />
           </div>
           <!-- card -->
-          <div>
-            <img src="#" />
-            <p>username</p>
-            <p>... min ago</p>
+          <div
+            class="rounded text-zinc-900 bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-100"
+          >
+            <div class="flex items-center justify-between p-4">
+              <div class="flex items-center gap-4">
+                <img
+                  src="https://images.unsplash.com/photo-1586022045315-1cdd6493045c?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="profile image"
+                  class="object-cover w-10 h-10 rounded-full"
+                />
+                <p class="text-lg font-bold">Tony</p>
+              </div>
+              <p>1 day ago</p>
+            </div>
+            <img
+              src="https://images.unsplash.com/photo-1631635589499-afd87d52bf64?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="man on top of a mountain looking out over the view"
+              class="object-cover w-full h-64 rounded-b"
+            />
           </div>
           <!-- card -->
-          <div>
-            <img src="#" />
-            <p>username</p>
-            <p>... min ago</p>
+          <div
+            class="rounded text-zinc-900 bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-100"
+          >
+            <div class="flex items-center justify-between p-4">
+              <div class="flex items-center gap-4">
+                <img
+                  src="https://images.unsplash.com/photo-1637692514158-6694f81db16d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="profile image"
+                  class="object-cover w-10 h-10 rounded-full"
+                />
+                <p class="text-lg font-bold">Rachel</p>
+              </div>
+              <p>1 day ago</p>
+            </div>
+            <img
+              src="https://images.unsplash.com/photo-1445217143695-467124038776?q=80&w=3066&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="man on top of a mountain looking out over the view"
+              class="object-cover w-full h-64 rounded-b"
+            />
+          </div>
+          <div
+            class="rounded text-zinc-900 bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-100"
+          >
+            <div class="flex items-center justify-between p-4">
+              <div class="flex items-center gap-4">
+                <img
+                  src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="profile image"
+                  class="object-cover w-10 h-10 rounded-full"
+                />
+                <p class="text-lg font-bold">Daniel</p>
+              </div>
+              <p>2 days ago</p>
+            </div>
+            <img
+              src="https://images.unsplash.com/photo-1702012465011-0f86e2de7aaa?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="man on top of a mountain looking out over the view"
+              class="object-cover w-full h-64 rounded-b"
+            />
+          </div>
+          <!-- card -->
+          <div
+            class="rounded text-zinc-900 bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-100"
+          >
+            <div class="flex items-center justify-between p-4">
+              <div class="flex items-center gap-4">
+                <img
+                  src="https://images.unsplash.com/photo-1586022045315-1cdd6493045c?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="profile image"
+                  class="w-10 h-10 rounded-full"
+                />
+                <p class="text-lg font-bold">Tony</p>
+              </div>
+              <p>3 days ago</p>
+            </div>
+            <img
+              src="https://images.unsplash.com/photo-1548957175-84f0f9af659e?q=80&w=2964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="man on top of a mountain looking out over the view"
+              class="object-cover w-full h-64 rounded-b"
+            />
           </div>
         </div>
       </div>
     </main>
 
-    <footer>© 2025 Martine Kongsrud. All rights reserved.</footer>
+    <footer
+      class="p-10 text-center bg-zinc-200 text-zinc-900 dark:text-zinc-100 dark:bg-zinc-800"
+    >
+      © 2025 Martine Kongsrud. All rights reserved.
+    </footer>
   </body>
 </html>
