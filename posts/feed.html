@@ -141,15 +141,33 @@
     <main class="flex-grow mx-8 mt-14 md:mx-auto md:px-8">
       <div class="flex flex-col gap-8">
         <h1 class="text-5xl font-bold capitalize">feed</h1>
-        <div class="flex gap-4">
-          <input
-            type="search"
-            name="search"
-            id="search"
-            aria-label="search for posts"
-            placeholder="Search for posts"
-            class="flex-grow px-4 py-2 text-lg border rounded-3xl border-zinc-900 text-zinc-900"
-          />
+        <div class="flex w-full max-w-full gap-4">
+          <div class="relative flex flex-grow max-w-full min-w-0">
+            <input
+              type="search"
+              name="search"
+              id="search"
+              aria-label="search for posts"
+              placeholder="Search for posts"
+              class="flex-grow min-w-0 px-4 py-2 text-lg border rounded-3xl border-zinc-900 text-zinc-900"
+            />
+            <button class="absolute size-6 top-3 right-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="text-zinc-900"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                />
+              </svg>
+            </button>
+          </div>
           <button
             aria-label="create a post"
             class="h-12 px-4 text-xl font-bold tracking-wider capitalize transition duration-300 ease-in-out bg-teal-700 shadow-lg text-zinc-100 rounded-3xl hover:bg-teal-900 dark:bg-teal-300 dark:hover:bg-teal-500 dark:text-zinc-900"
