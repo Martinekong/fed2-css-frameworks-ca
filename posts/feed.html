@@ -176,6 +176,7 @@
           </div>
           <button
             aria-label="create a post"
+            id="create-post-btn"
             class="h-12 px-4 text-xl font-bold tracking-wider capitalize transition duration-300 ease-in-out bg-teal-700 shadow-lg text-zinc-100 rounded-3xl hover:bg-teal-900 dark:bg-teal-300 dark:hover:bg-teal-500 dark:text-zinc-900"
           >
             <svg
@@ -193,6 +194,42 @@
               />
             </svg>
           </button>
+
+          <div
+            id="create-post-modal"
+            class="fixed inset-0 z-50 items-center justify-center hidden bg-black/70 backdrop-blur-sm"
+          >
+            <form
+              class="flex flex-col gap-4 px-8 py-4 mt-12 rounded-md bg-zinc-200 dark:bg-zinc-800"
+              id="create-post-form"
+            >
+              <label for="imageUrl" class="text-xl capitalize">image</label>
+              <input
+                type="url"
+                name="imageUrl"
+                id="imageUrl"
+                placeholder="Enter image url"
+                class="px-4 py-2 text-lg border rounded-3xl border-zinc-900 text-zinc-900"
+              />
+              <label for="imageAlt" class="text-xl capitalize"
+                >image description</label
+              >
+              <input
+                type="text"
+                name="imageAlt"
+                id="imageAlt"
+                placeholder="Describe your image"
+                class="px-4 py-2 text-lg border rounded-3xl border-zinc-900 text-zinc-900"
+              />
+              <button
+                type="submit"
+                id="post-btn"
+                class="py-3 my-4 text-xl font-bold tracking-wider capitalize transition duration-300 ease-in-out bg-teal-700 shadow-lg text-zinc-100 rounded-3xl hover:bg-teal-900 dark:bg-teal-300 dark:hover:bg-teal-500 dark:text-zinc-900"
+              >
+                post
+              </button>
+            </form>
+          </div>
         </div>
         <div class="grid grid-cols-2">
           <button
