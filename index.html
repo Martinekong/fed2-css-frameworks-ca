@@ -146,13 +146,14 @@
     <main class="flex-grow mx-8 mt-14 md:mx-auto">
       <div class="mx-auto md:w-96 max-w-96">
         <h1 class="text-5xl font-bold capitalize">login</h1>
-        <form class="flex flex-col gap-4 mt-12">
+        <form action="./profile/profile.html" class="flex flex-col gap-4 mt-12">
           <label for="name" class="text-xl capitalize">name</label>
           <input
             type="text"
             name="name"
             id="name"
             placeholder="Enter your name"
+            required
             class="px-4 py-2 text-lg border rounded-3xl border-zinc-900 text-zinc-900"
           />
           <label for="password" class="mt-6 text-xl capitalize">password</label>
@@ -161,6 +162,8 @@
             name="password"
             id="password"
             placeholder="Enter your email"
+            required
+            minlength="8"
             class="px-4 py-2 text-lg border rounded-3xl border-zinc-900 text-zinc-900"
           />
           <button
